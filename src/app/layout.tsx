@@ -16,9 +16,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSE 435 HFD1 Project Website",
-  description: "Created by MSU students",
-};
+    title: 'CSE 435 Project - HFD1',
+    description: 'CSE 435 Software Engineering project website featuring team information, resources, and project documentation.',
+    openGraph: {
+        title: 'CSE 435 Project - Software Engineering',
+        description: 'CSE 435 Software Engineering project website featuring team information, resources, and project documentation.',
+        url: 'https://cse-435-hfd1.vercel.app/',
+        siteName: 'CSE 435 Project',
+        images: [
+            {
+                url: 'https://cse-435-hfd1.vercel.app/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: 'CSE 435 Project',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+}
 
 export default function RootLayout({
   children,
