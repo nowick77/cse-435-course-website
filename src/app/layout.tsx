@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'CSE 435 Project - HFD1',
     description: 'CSE 435 Software Engineering project website featuring team information, resources, and project documentation.',
     openGraph: {
-        title: 'CSE 435 Project - Software Engineering',
+        title: 'CSE 435 Project - HFD1',
         description: 'CSE 435 Software Engineering project website featuring team information, resources, and project documentation.',
         url: 'https://cse-435-hfd1.vercel.app/',
         siteName: 'CSE 435 Project',
