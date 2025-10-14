@@ -18,6 +18,8 @@ export default function Resources() {
                     <a
                         key={idx}
                         href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-green-300 transition-all flex items-center gap-4 group"
                     >
                         <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
