@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    output: 'export',
+    basePath: '/cse-435-course-website',
+    assetPrefix: '/course-website/',
+    images: {
+        unoptimized: true,
+    },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = nextConfig
