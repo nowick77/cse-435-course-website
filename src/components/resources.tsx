@@ -1,8 +1,3 @@
-import Header from "@/components/header";
-import Hero from "@/components/hero";
-import Background from "@/components/background-cards";
-import TeamSection from "@/components/team-section";
-
 export default function Resources() {
     const publicLinks = [
         { name: 'Project Description', icon: '📄', url: '/docs/project-description.pdf' },
