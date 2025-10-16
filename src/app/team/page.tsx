@@ -10,8 +10,6 @@ export default function Team() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
             ),
-            bgColor: 'from-blue-100 to-blue-200',
-            iconColor: 'text-blue-600',
             url: '/team/agendas'
         },
         {
@@ -22,8 +20,6 @@ export default function Team() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
             ),
-            bgColor: 'from-green-100 to-green-200',
-            iconColor: 'text-green-600',
             url: '/team/milestones'
         },
         {
@@ -34,8 +30,6 @@ export default function Team() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
             ),
-            bgColor: 'from-purple-100 to-purple-200',
-            iconColor: 'text-purple-600',
             url: '/team/deliverables'
         },
         {
@@ -46,8 +40,6 @@ export default function Team() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                 </svg>
             ),
-            bgColor: 'from-orange-100 to-orange-200',
-            iconColor: 'text-orange-600',
             url: '/team/forum'
         },
         {
@@ -58,8 +50,6 @@ export default function Team() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             ),
-            bgColor: 'from-red-100 to-red-200',
-            iconColor: 'text-red-600',
             url: '/team/qa'
         },
     ];
@@ -69,7 +59,7 @@ export default function Team() {
             <div className="max-w-7xl mx-auto px-6 py-8">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-8 transition-colors"
+                    className="inline-flex items-center gap-2 text-green-700 hover:text-slate-900 mb-8 transition-colors"
                 >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -89,7 +79,7 @@ export default function Team() {
                             href={resource.url}
                             className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-green-300 transition-all flex items-center gap-4 group"
                         >
-                            <div className={`w-14 h-14 bg-gradient-to-br ${resource.bgColor} rounded-xl flex items-center justify-center ${resource.iconColor} group-hover:scale-110 transition-transform`}>
+                            <div className={`w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center text-green-700 group-hover:scale-110 transition-transform`}>
                                 {resource.icon}
                             </div>
                             <div>
