@@ -9,11 +9,10 @@ export default function Background() {
                     <h3 className="text-2xl font-bold text-slate-900">Background</h3>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                    The automotive industry is rapidly evolving toward autonomous vehicles, but the gap between current
-                    technology and fully hands-free driving remains significant. Clear requirements definition is
-                    critical for developing safe, reliable systems that meet regulatory standards and user expectations.
-                    This project addresses that need by establishing a detailed problem space analysis and
-                    specification framework.
+                    The automotive industry has been rapidly innovating autonomous vehicles, but the industry is far from
+                    developing a fully hands-free driving system. Clearly defined, high quality requirements has become
+                    critical for developing safe and reliable systems that function as expected. This project addresses
+                    that need by defining a detailed problem space and specification framework.
                 </p>
             </div>
 
@@ -25,11 +24,10 @@ export default function Background() {
                     <h3 className="text-2xl font-bold text-slate-900">Description</h3>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                    This project focuses on requirements engineering for a hands-free driving system. Our deliverables
-                    include a complete Software Requirements Specification (SRS) document detailing functional and
-                    non-functional requirements, safety constraints, and system architecture.
-                    The accompanying prototype demonstrates key capabilities and validates our requirements through
-                    real-world scenarios, providing stakeholders with a concrete vision of the final product.
+                    Our project focuses on requirements engineering for a hands-free driving system. The deliverables for
+                    the project include a Software Requirements Specification (SRS) detailing invariant, functional, and
+                    non-functional requirements for the system; and a prototype demonstrating key features and functionality
+                    of the desired system, providing stakeholders with a vision of the final product.
                 </p>
             </div>
         </section>
