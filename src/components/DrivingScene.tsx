@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, Environment, Text } from '@react-three/drei';
+import { PerspectiveCamera, Environment } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useMemo, useState, useEffect } from 'react';
 import * as THREE from 'three';
@@ -483,8 +483,9 @@ function Car({
             ref.current.rotation.y = angle;
 
             // Visual indicator based on control mode
-            const material = (ref.current.children[0] as any)?.material;
-            if (material) {
+            const child = ref.current.children[0] as THREE.Mesh;
+            const material = child?.material as THREE.MeshStandardMaterial;
+            if (material && material.emissive) {
                 if (controlMode === 'hdfs') {
                     material.emissive = new THREE.Color(0x00ff00);
                     material.emissiveIntensity = 0.3;

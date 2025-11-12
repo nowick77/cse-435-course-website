@@ -3,16 +3,15 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -37,22 +36,22 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <Header />
-          <main>
-              {children}
-          </main>
-      </div>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+        <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+            <Header />
+            <main>
+                {children}
+            </main>
+        </div>
+        </body>
+        </html>
+    );
 }
