@@ -422,6 +422,7 @@ function Car({
                  controlMode,
                  laneOffset = 0,
                  shouldStop = false,
+                 isPaused = false,
              }: {
     carRef?: React.RefObject<THREE.Group | null>;
     offset?: number;
@@ -430,6 +431,7 @@ function Car({
     controlMode: 'driver' | 'hdfs' | 'transitioning';
     laneOffset?: number;
     shouldStop?: boolean;
+    isPaused?: boolean;
 }) {
     const { scene } = useGLTF('/models/car.glb');
     const localRef = useRef<THREE.Group>(null);
@@ -453,6 +455,9 @@ function Car({
                 ref.current.rotation.y = angle;
                 initializedRef.current = true;
             }
+
+            // Don't update if paused
+            if (isPaused) return;
 
             // Handle stopping behavior
             if (shouldStop) {
@@ -604,6 +609,7 @@ function StatusDisplay({ status, currentMessage }: { status: SystemStatus; curre
                 display: 'flex',
                 flexDirection: 'column',
                 overflowY: 'auto',
+                pointerEvents: 'auto',
             }}
         >
             <h3 style={{ margin: '0 0 35px 0', fontSize: '22px', color: '#00ffff', fontWeight: 'bold', letterSpacing: '1px' }}>
@@ -737,6 +743,7 @@ function ScenarioSelector({
                 display: 'flex',
                 flexDirection: 'column',
                 overflowY: 'auto',
+                pointerEvents: 'auto',
             }}
         >
             <h3 style={{ margin: '0 0 30px 0', fontSize: '22px', color: '#00ffff', fontWeight: 'bold', letterSpacing: '1px' }}>
@@ -852,11 +859,12 @@ function ScenarioTimer({
 // MAIN COMPONENT
 // ============================================================================
 
-const Scene = React.memo(({ playerCarRef, path, controlMode, shouldStop }: {
+const Scene = React.memo(({ playerCarRef, path, controlMode, shouldStop, isPaused }: {
     playerCarRef: React.RefObject<THREE.Group | null>;
     path: THREE.CatmullRomCurve3;
     controlMode: 'driver' | 'hdfs' | 'transitioning';
     shouldStop: boolean;
+    isPaused: boolean;
 }) => {
     return (
         <>
@@ -875,6 +883,7 @@ const Scene = React.memo(({ playerCarRef, path, controlMode, shouldStop }: {
                 controlMode={controlMode}
                 laneOffset={6}
                 shouldStop={shouldStop}
+                isPaused={isPaused}
             />
 
             <CurvedHighway path={path} />
@@ -882,11 +891,19 @@ const Scene = React.memo(({ playerCarRef, path, controlMode, shouldStop }: {
             <Environment preset="sunset" />
         </>
     );
+}, (prevProps, nextProps) => {
+    // Return true if props are equal (prevent re-render)
+    // Return false if props are different (allow re-render)
+    return prevProps.controlMode === nextProps.controlMode &&
+        prevProps.shouldStop === nextProps.shouldStop &&
+        prevProps.isPaused === nextProps.isPaused &&
+        prevProps.path === nextProps.path &&
+        prevProps.playerCarRef === nextProps.playerCarRef;
 });
 
 Scene.displayName = 'Scene';
 
-export default function HDFSSimulation() {
+export default function DrivingScene() {
     const playerCarRef = useRef<THREE.Group>(null);
     const path = useMemo(() => createHighwayPath(), []);
 
@@ -971,29 +988,30 @@ export default function HDFSSimulation() {
     return (
         <div
             style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
+                position: 'relative',
+                width: '100%',
+                height: 'calc(100vh - 80px)', // Adjust 80px to match your header height
                 margin: 0,
                 padding: 0,
                 background: '#000',
+                overflow: 'hidden',
             }}
         >
-            {currentScenario && (
-                <>
-                    <StatusDisplay status={systemStatus} currentMessage={currentMessage} />
-                    <ScenarioTimer elapsed={elapsedTime} duration={scenarioDuration} />
-                </>
-            )}
-            <ScenarioSelector
-                scenarios={scenarios}
-                onSelectScenario={handleSelectScenario}
-                currentScenario={currentScenario}
-                isPaused={isPaused}
-                onTogglePause={handleTogglePause}
-            />
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+                {currentScenario && (
+                    <>
+                        <StatusDisplay status={systemStatus} currentMessage={currentMessage} />
+                        <ScenarioTimer elapsed={elapsedTime} duration={scenarioDuration} />
+                    </>
+                )}
+                <ScenarioSelector
+                    scenarios={scenarios}
+                    onSelectScenario={handleSelectScenario}
+                    currentScenario={currentScenario}
+                    isPaused={isPaused}
+                    onTogglePause={handleTogglePause}
+                />
+            </div>
 
             <Canvas style={{ width: '100%', height: '100%' }}>
                 <Scene
@@ -1001,6 +1019,7 @@ export default function HDFSSimulation() {
                     path={path}
                     controlMode={systemStatus.controlMode}
                     shouldStop={!systemStatus.hdfsActive && systemStatus.driverAttentionLevel === 0}
+                    isPaused={isPaused}
                 />
             </Canvas>
         </div>
