@@ -1,4 +1,4 @@
-import DrivingScene from '@/components/DrivingScene';
+import DrivingScene from '@/components/prototype/DrivingScene';
 
 export default function DemoPage() {
     return (
